@@ -1,10 +1,10 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import DropDown from '../components/DropDown';
+import CustomDropdown from '../components/Dropdown';
 
 const meta: Meta = {
   title: 'Dropdown',
-  component: DropDown,
+  component: CustomDropdown,
 };
 
 export default meta;
@@ -17,6 +17,6 @@ const optionList = [
   { id: 5, option: 'White' },
 ];
 
-export function Drop() {
-  return <DropDown label="Colors" dropDownOptions={optionList} />;
+export function Dropdown() {
+  return <CustomDropdown label="Colors" dropDownOptions={optionList} />;
 }
