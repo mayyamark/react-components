@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Meta } from '@storybook/react';
-import GridFormSubmit, { Address } from '../components/GridForm';
+import CustomGridForm, { Address } from '../components/GridForm';
 
 const logInfo = (props: Address) => {
   const MyPromise = new Promise((resolve, reject) => {
@@ -33,7 +33,7 @@ const getInfo = async () => {
   return result;
 };
 
-export function FormWithDefaultValues() {
+export function GridForm() {
   const [values, setValues] = useState<Address | null>({
     street: '',
     city: '',
@@ -63,7 +63,7 @@ export function FormWithDefaultValues() {
     }
   };
   return (
-    <GridFormSubmit
+    <CustomGridForm
       onFormSubmit={handleSubmit}
       defaultValues={values}
       loading={loading}
@@ -72,8 +72,8 @@ export function FormWithDefaultValues() {
 }
 
 const meta: Meta = {
-  title: 'GridForm',
-  component: GridFormSubmit,
+  title: 'Grid Form',
+  component: CustomGridForm,
 };
 
 export default meta;

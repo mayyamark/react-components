@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Meta } from '@storybook/react';
-import FormSubmit, { Address } from '../components/Form';
+import CustomFlexboxForm, { Address } from '../components/FlexboxForm';
 
 const logInfo = (props: Address) => {
   const MyPromise = new Promise((resolve, reject) => {
@@ -13,8 +13,10 @@ const logInfo = (props: Address) => {
       }
     }, 5000);
   });
+
   MyPromise.then().catch((err) => console.log(err));
 };
+
 const getInfo = async () => {
   const promise = new Promise((resolve) => {
     setTimeout(
@@ -29,11 +31,13 @@ const getInfo = async () => {
       3000,
     );
   });
+
   const result = await promise.catch((err) => console.log(err));
+
   return result;
 };
 
-export function FormWithDefaultValues() {
+export function FlexboxForm() {
   const [values, setValues] = useState<Address | null>({
     street: '',
     city: '',
@@ -43,6 +47,7 @@ export function FormWithDefaultValues() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
   useEffect(() => {
     setLoading(true);
     getInfo()
@@ -53,17 +58,20 @@ export function FormWithDefaultValues() {
       })
       .finally(() => setLoading(false));
   }, []);
+
   if (error) {
     return <main>An error has ocurred</main>;
   }
+
   const handleSubmit = (values: Address) => {
     logInfo(values);
     if (error) {
       console.log(error);
     }
   };
+
   return (
-    <FormSubmit
+    <CustomFlexboxForm
       onFormSubmit={handleSubmit}
       defaultValues={values}
       loading={loading}
@@ -72,8 +80,8 @@ export function FormWithDefaultValues() {
 }
 
 const meta: Meta = {
-  title: 'FlexForm',
-  component: FormSubmit,
+  title: 'Flexbox Form',
+  component: CustomFlexboxForm,
 };
 
 export default meta;
