@@ -5,13 +5,14 @@ import {
   Autocomplete,
   InputAdornment,
 } from '@mui/material';
-import useCarSearch from './useCarSearch';
+import useCarSearch from '../../hooks/useCarSearch';
 
 export interface TextCustomise {
   label?: string;
   helperText?: string;
   id?: string;
 }
+
 const debounce = (fn: Function, ms = 300) => {
   let timeoutId: ReturnType<typeof setTimeout>;
   return function (this: any, ...args: any[]) {
