@@ -9,6 +9,15 @@ const meta: Meta = {
 
 export default meta;
 
+const selectedValue = (value: unknown) => {
+  console.log(value);
+};
+
 export function CarAutocomplete() {
-  return <CustomCarAutocomplete />;
+  return (
+    <CustomCarAutocomplete
+      selectedOption={selectedValue}
+      textFieldProps={{ label: 'Cars' }}
+    />
+  );
 }

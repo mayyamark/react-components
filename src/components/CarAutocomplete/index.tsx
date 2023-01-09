@@ -4,13 +4,13 @@ import {
   CircularProgress,
   Autocomplete,
   InputAdornment,
+  TextFieldProps,
 } from '@mui/material';
 import useCarSearch from '../../hooks/useCarSearch';
 
-export interface TextCustomise {
-  label?: string;
-  helperText?: string;
-  id?: string;
+interface AutocompleteProps {
+  textFieldProps?: TextFieldProps;
+  selectedOption: (value: unknown) => void;
 }
 
 const debounce = (fn: Function, ms = 300) => {
@@ -21,17 +21,15 @@ const debounce = (fn: Function, ms = 300) => {
   };
 };
 
-export default function SearchCarAutocomplete(props: TextCustomise) {
+const SearchCarAutocomplete: React.FC<AutocompleteProps> = ({
+  textFieldProps,
+  selectedOption,
+}: AutocompleteProps) => {
   const header = {
     'X-RapidAPI-Key': '59f0db3649msh4cb00124f5c8564p191a6cjsnc468d27648d7',
     'X-RapidAPI-Host': 'car-data.p.rapidapi.com',
   };
   const { cars, loading, error, search } = useCarSearch(header);
-  const {
-    label = 'Cars',
-    helperText = 'There is an issue with your request',
-    id = '1',
-  } = props;
 
   const handleChange = (value: string) => {
     if (value.length >= 3) {
@@ -46,23 +44,19 @@ export default function SearchCarAutocomplete(props: TextCustomise) {
       onInputChange={(event, value) => {
         debouncedFunction(value);
       }}
-      onChange={(event, value) => {
-        const selectedOption = value;
-        return selectedOption;
-      }}
+      onChange={(event, value) => selectedOption(value)}
       selectOnFocus
       clearOnBlur
       handleHomeEndKeys
-      id={id}
       options={cars}
       getOptionLabel={(option) =>
         `${option.make} ${option.model} ${option.year}`
       }
       renderInput={(option) => (
         <TextField
-          helperText={error && helperText}
+          {...textFieldProps}
+          helperText={error ? 'An error' : textFieldProps?.helperText ?? ''}
           error={error}
-          label={label}
           {...option}
           InputProps={{
             ...option.InputProps,
@@ -77,4 +71,6 @@ export default function SearchCarAutocomplete(props: TextCustomise) {
       )}
     />
   );
-}
+};
+
+export default SearchCarAutocomplete;
