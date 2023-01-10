@@ -11,6 +11,7 @@ import useCarSearch from '../../hooks/useCarSearch';
 interface AutocompleteProps {
   textFieldProps?: TextFieldProps;
   selectedOption: (value: unknown) => void;
+  header: HeadersInit;
 }
 
 const debounce = (fn: Function, ms = 300) => {
@@ -24,11 +25,8 @@ const debounce = (fn: Function, ms = 300) => {
 const SearchCarAutocomplete: React.FC<AutocompleteProps> = ({
   textFieldProps,
   selectedOption,
+  header,
 }: AutocompleteProps) => {
-  const header = {
-    'X-RapidAPI-Key': '59f0db3649msh4cb00124f5c8564p191a6cjsnc468d27648d7',
-    'X-RapidAPI-Host': 'car-data.p.rapidapi.com',
-  };
   const { cars, loading, error, search } = useCarSearch(header);
 
   const handleChange = (value: string) => {
