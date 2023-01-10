@@ -39,8 +39,10 @@ const SearchCarAutocomplete: React.FC<AutocompleteProps> = ({
 
   return (
     <Autocomplete
-      onInputChange={(event, value) => {
-        debouncedFunction(value);
+      onInputChange={(event, value, reason) => {
+        if (reason === 'input') {
+          debouncedFunction(value);
+        }
       }}
       onChange={(event, value) => onCarSelection(value)}
       selectOnFocus
