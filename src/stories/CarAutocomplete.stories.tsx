@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
+import SearchIcon from '@mui/icons-material/Search';
 import CustomCarAutocomplete from '../components/CarAutocomplete';
 
 const meta: Meta = {
@@ -22,7 +23,10 @@ export function CarAutocomplete() {
   return (
     <CustomCarAutocomplete
       onCarSelection={selectedValue}
-      textFieldProps={{ label: 'Cars' }}
+      textFieldProps={{
+        label: 'Cars',
+        InputProps: { startAdornment: <SearchIcon /> },
+      }}
       header={header}
     />
   );

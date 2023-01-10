@@ -66,6 +66,7 @@ const SearchCarAutocomplete: React.FC<AutocompleteProps> = ({
                 {option.InputProps.endAdornment}
               </InputAdornment>
             ),
+            ...textFieldProps?.InputProps,
           }}
         />
       )}
