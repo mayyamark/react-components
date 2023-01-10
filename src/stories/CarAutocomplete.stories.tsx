@@ -21,7 +21,7 @@ const header = {
 export function CarAutocomplete() {
   return (
     <CustomCarAutocomplete
-      selectedOption={selectedValue}
+      onCarSelection={selectedValue}
       textFieldProps={{ label: 'Cars' }}
       header={header}
     />

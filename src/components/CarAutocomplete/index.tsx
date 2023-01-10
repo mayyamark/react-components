@@ -10,7 +10,7 @@ import useCarSearch from '../../hooks/useCarSearch';
 
 interface AutocompleteProps {
   textFieldProps?: TextFieldProps;
-  selectedOption: (value: unknown) => void;
+  onCarSelection: (value: unknown) => void;
   header: HeadersInit;
 }
 
@@ -24,7 +24,7 @@ const debounce = (fn: Function, ms = 300) => {
 
 const SearchCarAutocomplete: React.FC<AutocompleteProps> = ({
   textFieldProps,
-  selectedOption,
+  onCarSelection,
   header,
 }: AutocompleteProps) => {
   const { cars, loading, error, search } = useCarSearch(header);
@@ -42,7 +42,7 @@ const SearchCarAutocomplete: React.FC<AutocompleteProps> = ({
       onInputChange={(event, value) => {
         debouncedFunction(value);
       }}
-      onChange={(event, value) => selectedOption(value)}
+      onChange={(event, value) => onCarSelection(value)}
       selectOnFocus
       clearOnBlur
       handleHomeEndKeys
