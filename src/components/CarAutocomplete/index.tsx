@@ -10,13 +10,13 @@ import useCarSearch from '../../hooks/useCarSearch';
 
 interface AutocompleteProps {
   textFieldProps?: TextFieldProps;
-  onCarSelection: (value: unknown) => void;
-  header: HeadersInit;
+  onChangeCallback?: (value: unknown) => void;
+  headers: HeadersInit;
 }
 
 const debounce = (fn: Function, ms = 300) => {
   let timeoutId: ReturnType<typeof setTimeout>;
-  return function (this: any, ...args: any[]) {
+  return function (this: unknown, ...args: unknown[]) {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => fn.apply(this, args), ms);
   };
@@ -24,10 +24,10 @@ const debounce = (fn: Function, ms = 300) => {
 
 const SearchCarAutocomplete: React.FC<AutocompleteProps> = ({
   textFieldProps,
-  onCarSelection,
-  header,
+  onChangeCallback,
+  headers,
 }: AutocompleteProps) => {
-  const { cars, loading, error, search } = useCarSearch(header);
+  const { cars, loading, error, search } = useCarSearch(headers);
 
   const handleChange = (value: string) => {
     if (value.length >= 3) {
@@ -44,7 +44,11 @@ const SearchCarAutocomplete: React.FC<AutocompleteProps> = ({
           debouncedFunction(value);
         }
       }}
-      onChange={(event, value) => onCarSelection(value)}
+      onChange={(event, value) => {
+        if (onChangeCallback !== undefined) {
+          onChangeCallback(value);
+        }
+      }}
       selectOnFocus
       clearOnBlur
       handleHomeEndKeys

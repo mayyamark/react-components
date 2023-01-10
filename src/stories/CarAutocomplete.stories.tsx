@@ -22,12 +22,12 @@ const header = {
 export function CarAutocomplete() {
   return (
     <CustomCarAutocomplete
-      onCarSelection={selectedValue}
+      onChangeCallback={selectedValue}
       textFieldProps={{
         label: 'Cars',
         InputProps: { startAdornment: <SearchIcon /> },
       }}
-      header={header}
+      headers={header}
     />
   );
 }
