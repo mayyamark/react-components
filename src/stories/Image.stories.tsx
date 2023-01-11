@@ -8,13 +8,12 @@ const meta: Meta = {
 };
 
 export default meta;
-
 export function Image() {
   return (
     <ImageComponent
       imageCustomise={{
-        src: 'https://pix.avax.news/avaxnews/12/e4/0000e412.jpeg',
-        alt: 'A picture ',
+        alt: 'A picture',
+        src: 'https://th.bing.com/th/id/OIP.D4-WzVpB1I_0WnUSDcnGEAHaFm?pid=ImgDet&rs=1',
       }}
     />
   );

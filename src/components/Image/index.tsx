@@ -1,18 +1,32 @@
-import React from 'react';
-import Box from '@mui/material/Box/Box';
+import React, { ImgHTMLAttributes } from 'react';
+import { styled } from '@mui/material';
 
 interface ImageDetails {
-  imageCustomise?: React.ImgHTMLAttributes<HTMLImageElement>;
+  imageCustomise?: ImgHTMLAttributes<HTMLImageElement>;
 }
 
-function ImageComponent(imageCustomise: ImageDetails) {
-  return (
-    <Box
-      component="img"
-      src="https://pix.avax.news/avaxnews/12/e4/0000e412.jpeg"
-      {...imageCustomise}
-    />
-  );
+const StyledImage = styled('img')({
+  variants: {
+    sizes: {
+      prop: 'size',
+      variants: {
+        xsmall: {
+          style: {
+            width: 50,
+            height: 50,
+          },
+        },
+        small: {
+          width: 100,
+          height: 100,
+        },
+      },
+    },
+  },
+});
+
+function ImageComponent({ imageCustomise }: ImageDetails) {
+  return <StyledImage {...imageCustomise} alt="Something" />;
 }
 
 export default ImageComponent;
