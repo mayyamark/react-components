@@ -1,5 +1,9 @@
 import React from 'react';
 
-export function ImageComponent() {
+interface ImageDetails {
+  imageCustomise?: React.ImgHTMLAttributes<HTMLImageElement>;
+}
+
+export function ImageComponent(ImageStyles: ImageDetails) {
   return <div>Hi</div>;
 }
