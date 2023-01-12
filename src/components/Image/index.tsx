@@ -1,4 +1,4 @@
-import React, { ImgHTMLAttributes } from 'react';
+import React, { ImgHTMLAttributes, useState } from 'react';
 import { styled } from '@mui/system';
 import { Container } from '@mui/material';
 
@@ -29,15 +29,18 @@ const ImageComponent: React.FC<ImageDetails> = ({
   size = 'large',
   avatar,
 }: ImageDetails) => {
+  const [valid, setValid] = useState(false);
   const currentSize = sizes[size];
   const url = imageCustomise?.src;
 
-  const Validation = () => {
-    async function exists(url: any) {
-      let valid;
-      const result = await fetch(url, { method: 'HEAD' });
-    }
-  };
+  async function exists(src: any) {
+    const result = await fetch(src, { method: 'GET' });
+    return result.ok;
+  }
+
+  exists(url)
+    .then(() => setValid(true))
+    .catch(() => setValid(false));
 
   function isValidURL(url: any) {
     let isValid: boolean;
@@ -53,7 +56,7 @@ const ImageComponent: React.FC<ImageDetails> = ({
     return isValid;
   }
 
-  return imageCustomise?.src === undefined || !isValidURL(url) ? (
+  return imageCustomise?.src === undefined || !isValidURL(url) || !valid ? (
     <StyledContainer>This image could now be loaded</StyledContainer>
   ) : (
     <StyledImage
