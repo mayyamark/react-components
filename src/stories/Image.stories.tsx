@@ -19,3 +19,15 @@ export function Image() {
     />
   );
 }
+
+export function AvatarImage() {
+  return (
+    <ImageComponent
+      avatar={true}
+      imageCustomise={{
+        alt: 'A picture',
+        src: 'https://th.bing.com/th/id/OIP.D4-WzVpB1I_0WnUSDcnGEAHaFm?pid=ImgDet&rs=1',
+      }}
+    />
+  );
+}
