@@ -24,13 +24,20 @@ const StyledContainer = styled(Container)({
   backgroundColor: 'grey',
 });
 
-function ImageComponent({
+const ImageComponent: React.FC<ImageDetails> = ({
   imageCustomise,
   size = 'large',
   avatar,
-}: ImageDetails) {
+}: ImageDetails) => {
   const currentSize = sizes[size];
   const url = imageCustomise?.src;
+
+  const Validation = () => {
+    async function exists(url: any) {
+      let valid;
+      const result = await fetch(url, { method: 'HEAD' });
+    }
+  };
 
   function isValidURL(url: any) {
     let isValid: boolean;
@@ -57,6 +64,6 @@ function ImageComponent({
       avatar={avatar}
     />
   );
-}
+};
 
 export default ImageComponent;
