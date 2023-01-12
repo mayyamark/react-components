@@ -4,34 +4,30 @@ import {
   CircularProgress,
   Autocomplete,
   InputAdornment,
+  TextFieldProps,
 } from '@mui/material';
 import useCarSearch from '../../hooks/useCarSearch';
 
-export interface TextCustomise {
-  label?: string;
-  helperText?: string;
-  id?: string;
+interface AutocompleteProps {
+  textFieldProps?: TextFieldProps;
+  onChangeCallback?: (value: unknown) => void;
+  headers: HeadersInit;
 }
 
 const debounce = (fn: Function, ms = 300) => {
   let timeoutId: ReturnType<typeof setTimeout>;
-  return function (this: any, ...args: any[]) {
+  return function (this: unknown, ...args: unknown[]) {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => fn.apply(this, args), ms);
   };
 };
 
-export default function SearchCarAutocomplete(props: TextCustomise) {
-  const header = {
-    'X-RapidAPI-Key': '59f0db3649msh4cb00124f5c8564p191a6cjsnc468d27648d7',
-    'X-RapidAPI-Host': 'car-data.p.rapidapi.com',
-  };
-  const { cars, loading, error, search } = useCarSearch(header);
-  const {
-    label = 'Cars',
-    helperText = 'There is an issue with your request',
-    id = '1',
-  } = props;
+const SearchCarAutocomplete: React.FC<AutocompleteProps> = ({
+  textFieldProps,
+  onChangeCallback,
+  headers,
+}: AutocompleteProps) => {
+  const { cars, loading, error, search } = useCarSearch(headers);
 
   const handleChange = (value: string) => {
     if (value.length >= 3) {
@@ -43,26 +39,28 @@ export default function SearchCarAutocomplete(props: TextCustomise) {
 
   return (
     <Autocomplete
-      onInputChange={(event, value) => {
-        debouncedFunction(value);
+      onInputChange={(event, value, reason) => {
+        if (reason === 'input') {
+          debouncedFunction(value);
+        }
       }}
       onChange={(event, value) => {
-        const selectedOption = value;
-        return selectedOption;
+        if (onChangeCallback !== undefined) {
+          onChangeCallback(value);
+        }
       }}
       selectOnFocus
       clearOnBlur
       handleHomeEndKeys
-      id={id}
       options={cars}
       getOptionLabel={(option) =>
         `${option.make} ${option.model} ${option.year}`
       }
       renderInput={(option) => (
         <TextField
-          helperText={error && helperText}
+          {...textFieldProps}
+          helperText={error ? 'An error' : textFieldProps?.helperText ?? ''}
           error={error}
-          label={label}
           {...option}
           InputProps={{
             ...option.InputProps,
@@ -72,9 +70,12 @@ export default function SearchCarAutocomplete(props: TextCustomise) {
                 {option.InputProps.endAdornment}
               </InputAdornment>
             ),
+            ...textFieldProps?.InputProps,
           }}
         />
       )}
     />
   );
-}
+};
+
+export default SearchCarAutocomplete;

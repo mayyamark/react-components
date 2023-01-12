@@ -24,6 +24,12 @@
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
+    "react/function-component-definition": [
+      0,
+      {
+        "namedComponents": "function-declaration"
+      }
+    ],
     "no-shadow": [
       "off",
       {
