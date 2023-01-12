@@ -32,17 +32,6 @@ function ImageComponent({
   const currentSize = sizes[size];
   const url = imageCustomise?.src;
 
-  async function exists(url: any) {
-    let valid;
-    const result = await fetch(url, { method: 'HEAD' });
-    if (result.status === 200) {
-      valid = true;
-    } else {
-      valid = false;
-    }
-    return valid;
-  }
-
   function isValidURL(url: any) {
     let isValid: boolean;
     if (
@@ -57,9 +46,7 @@ function ImageComponent({
     return isValid;
   }
 
-  return imageCustomise?.src === undefined ||
-    !isValidURL(url) ||
-    !exists(url) ? (
+  return imageCustomise?.src === undefined || !isValidURL(url) ? (
     <StyledContainer>This image could now be loaded</StyledContainer>
   ) : (
     <StyledImage

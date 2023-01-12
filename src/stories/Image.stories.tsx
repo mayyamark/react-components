@@ -23,10 +23,33 @@ export function Image() {
 export function AvatarImage() {
   return (
     <ImageComponent
-      avatar={true}
+      avatar
       imageCustomise={{
         alt: 'A picture',
         src: 'https://th.bing.com/th/id/OIP.D4-WzVpB1I_0WnUSDcnGEAHaFm?pid=ImgDet&rs=1',
+      }}
+    />
+  );
+}
+
+export function InvalidURL() {
+  return (
+    <ImageComponent
+      avatar={false}
+      imageCustomise={{
+        alt: 'A picture',
+        src: 'th.bing.com/th/id/OIP.D4-WzVpB1I_0WnUSDcnGEAHaFm?pid=ImgDet&rs=1',
+      }}
+    />
+  );
+}
+
+export function NoURL() {
+  return (
+    <ImageComponent
+      avatar={false}
+      imageCustomise={{
+        alt: 'A picture',
       }}
     />
   );
