@@ -4,6 +4,7 @@ import { styled } from '@mui/system';
 interface ImageDetails {
   imageCustomise?: ImgHTMLAttributes<HTMLImageElement>;
   size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
+  avatar: boolean;
 }
 
 const sizes = {
@@ -14,9 +15,15 @@ const sizes = {
   'extra-large': 700,
 };
 
-const StyledImage = styled('img')({});
+const StyledImage = styled('img')(({ avatar }: ImageDetails) => ({
+  borderRadius: avatar ? '50%' : 0,
+}));
 
-function ImageComponent({ imageCustomise, size = 'large' }: ImageDetails) {
+function ImageComponent({
+  imageCustomise,
+  size = 'large',
+  avatar,
+}: ImageDetails) {
   const currentSize = sizes[size];
 
   return (
@@ -25,6 +32,7 @@ function ImageComponent({ imageCustomise, size = 'large' }: ImageDetails) {
       {...imageCustomise}
       width={currentSize}
       height={currentSize}
+      avatar={avatar}
     />
   );
 }
