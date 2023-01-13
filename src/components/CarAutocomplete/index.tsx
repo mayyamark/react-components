@@ -6,17 +6,17 @@ import {
   InputAdornment,
   TextFieldProps,
 } from '@mui/material';
-import useCarSearch from '../../hooks/useCarSearch';
+import useCarSearch, { CarInfo } from '../../hooks/useCarSearch';
 
 interface AutocompleteProps {
   textFieldProps?: TextFieldProps;
-  onChangeCallback?: (value: unknown) => void;
+  onChangeCallback?: (value: CarInfo | null) => void;
   headers: HeadersInit;
 }
 
 const debounce = (fn: Function, ms = 300) => {
   let timeoutId: ReturnType<typeof setTimeout>;
-  return function (this: unknown, ...args: unknown[]) {
+  return function debounced(this: unknown, ...args: unknown[]) {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => fn.apply(this, args), ms);
   };
@@ -39,12 +39,12 @@ const SearchCarAutocomplete: React.FC<AutocompleteProps> = ({
 
   return (
     <Autocomplete
-      onInputChange={(event, value, reason) => {
+      onInputChange={(_, value, reason) => {
         if (reason === 'input') {
           debouncedFunction(value);
         }
       }}
-      onChange={(event, value) => {
+      onChange={(_, value) => {
         if (onChangeCallback !== undefined) {
           onChangeCallback(value);
         }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import SearchIcon from '@mui/icons-material/Search';
 import CustomCarAutocomplete from '../components/CarAutocomplete';
+import { CarInfo } from '../hooks/useCarSearch';
 
 const meta: Meta = {
   title: 'Car Autocomplete',
@@ -10,11 +11,11 @@ const meta: Meta = {
 
 export default meta;
 
-const selectedValue = (value: unknown) => {
+const handleChange = (value: CarInfo | null) => {
   console.log(value);
 };
 
-const header = {
+const headers = {
   'X-RapidAPI-Key': '59f0db3649msh4cb00124f5c8564p191a6cjsnc468d27648d7',
   'X-RapidAPI-Host': 'car-data.p.rapidapi.com',
 };
@@ -22,12 +23,12 @@ const header = {
 export function CarAutocomplete() {
   return (
     <CustomCarAutocomplete
-      onChangeCallback={selectedValue}
+      onChangeCallback={handleChange}
       textFieldProps={{
         label: 'Cars',
         InputProps: { startAdornment: <SearchIcon /> },
       }}
-      headers={header}
+      headers={headers}
     />
   );
 }
