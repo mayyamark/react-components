@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-interface CarInfo {
+export interface CarInfo {
   year: number;
   model: string;
   make: string;
 }
 
-function useCarSearch(header: HeadersInit) {
+function useCarSearch(headers: HeadersInit) {
   const [cars, setCars] = useState<CarInfo[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -16,7 +16,7 @@ function useCarSearch(header: HeadersInit) {
 
     const options: RequestInit = {
       method: 'GET',
-      headers: header,
+      headers,
     };
 
     fetch(
@@ -31,6 +31,7 @@ function useCarSearch(header: HeadersInit) {
       })
       .finally(() => setLoading(false));
   };
+
   return { cars, loading, error, search };
 }
 
