@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import ImageComponent from '../components/Image';
+import ImageComponent, { sizes } from '../components/Image';
 
 const meta: Meta = {
   title: 'Image component',
@@ -14,6 +14,7 @@ export function Image() {
       avatar={false}
       src="https://th.bing.com/th/id/OIP.D4-WzVpB1I_0WnUSDcnGEAHaFm?pid=ImgDet&rs=1"
       alt="Just an image"
+      size={sizes.large}
     />
   );
 }
