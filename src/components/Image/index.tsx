@@ -29,6 +29,20 @@ async function isAnExistingUrl(src: any) {
   return result.ok;
 }
 
+function isValidURL(url: any) {
+  let isValid: boolean;
+  if (
+    /^(http(s):\/\/.)[-a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_.~#?&//=]*)$/g.test(
+      url,
+    )
+  ) {
+    isValid = true;
+  } else {
+    isValid = false;
+  }
+  return isValid;
+}
+
 const ImageComponent: React.FC<ImageDetails> = ({
   imageCustomise,
   size = 'large',
@@ -41,20 +55,6 @@ const ImageComponent: React.FC<ImageDetails> = ({
   isAnExistingUrl(url)
     .then(() => setValid(true))
     .catch(() => setValid(false));
-
-  function isValidURL(url: any) {
-    let isValid: boolean;
-    if (
-      /^(http(s):\/\/.)[-a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_.~#?&//=]*)$/g.test(
-        url,
-      )
-    ) {
-      isValid = true;
-    } else {
-      isValid = false;
-    }
-    return isValid;
-  }
 
   return imageCustomise?.src === undefined || !isValidURL(url) || !valid ? (
     <StyledContainer>This image could now be loaded</StyledContainer>
