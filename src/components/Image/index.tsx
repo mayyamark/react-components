@@ -2,7 +2,7 @@ import React, { ImgHTMLAttributes, useState } from 'react';
 import { styled } from '@mui/system';
 import { Container } from '@mui/material';
 
-interface ImageDetails {
+interface ImageProps {
   imageCustomise?: ImgHTMLAttributes<HTMLImageElement>;
   size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
   avatar: boolean;
@@ -16,7 +16,7 @@ const sizes = {
   'extra-large': 700,
 };
 
-const StyledImage = styled('img')(({ avatar }: ImageDetails) => ({
+const StyledImage = styled('img')(({ avatar }: ImageProps) => ({
   borderRadius: avatar ? '50%' : 0,
 }));
 
@@ -43,11 +43,11 @@ function isValidURL(url: any) {
   return isValid;
 }
 
-const ImageComponent: React.FC<ImageDetails> = ({
+const ImageComponent: React.FC<ImageProps> = ({
   imageCustomise,
   size = 'large',
   avatar,
-}: ImageDetails) => {
+}: ImageProps) => {
   const [valid, setValid] = useState(false);
   const currentSize = sizes[size];
   const url = imageCustomise?.src;
