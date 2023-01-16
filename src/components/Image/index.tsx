@@ -24,6 +24,11 @@ const StyledContainer = styled(Container)({
   backgroundColor: 'grey',
 });
 
+async function isAnExistingUrl(src: any) {
+  const result = await fetch(src, { method: 'GET' });
+  return result.ok;
+}
+
 const ImageComponent: React.FC<ImageDetails> = ({
   imageCustomise,
   size = 'large',
@@ -33,12 +38,7 @@ const ImageComponent: React.FC<ImageDetails> = ({
   const currentSize = sizes[size];
   const url = imageCustomise?.src;
 
-  async function exists(src: any) {
-    const result = await fetch(src, { method: 'GET' });
-    return result.ok;
-  }
-
-  exists(url)
+  isAnExistingUrl(url)
     .then(() => setValid(true))
     .catch(() => setValid(false));
 
