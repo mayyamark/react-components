@@ -1,4 +1,4 @@
-import React, { ImgHTMLAttributes, useState } from 'react';
+import React, { ImgHTMLAttributes } from 'react';
 import { styled } from '@mui/system';
 import { Container } from '@mui/material';
 
@@ -47,14 +47,18 @@ const ImageComponent: React.FC<ImageProps> = ({
   avatar,
   ...props
 }: ImageProps) => {
-  const [valid, setValid] = useState(false);
   const url = props.src;
+  const exists = true;
 
   isAnExistingUrl(url)
-    .then(() => setValid(true))
-    .catch(() => setValid(false));
+    .then(() => ({
+      exists,
+    }))
+    .catch(() => ({
+      exists: false,
+    }));
 
-  return props.src === undefined || !isValidURL(url) || !valid ? (
+  return props.src === undefined || !isValidURL(url) || !exists ? (
     <StyledContainer>This image could now be loaded</StyledContainer>
   ) : (
     <StyledImage
