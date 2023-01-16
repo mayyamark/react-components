@@ -2,8 +2,7 @@ import React, { ImgHTMLAttributes, useState } from 'react';
 import { styled } from '@mui/system';
 import { Container } from '@mui/material';
 
-interface ImageProps {
-  imageCustomise?: ImgHTMLAttributes<HTMLImageElement>;
+interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
   avatar: boolean;
 }
@@ -44,27 +43,27 @@ function isValidURL(url: any) {
 }
 
 const ImageComponent: React.FC<ImageProps> = ({
-  imageCustomise,
   size = 'large',
   avatar,
+  ...props
 }: ImageProps) => {
   const [valid, setValid] = useState(false);
   const currentSize = sizes[size];
-  const url = imageCustomise?.src;
+  const url = props.src;
 
   isAnExistingUrl(url)
     .then(() => setValid(true))
     .catch(() => setValid(false));
 
-  return imageCustomise?.src === undefined || !isValidURL(url) || !valid ? (
+  return props.src === undefined || !isValidURL(url) || !valid ? (
     <StyledContainer>This image could now be loaded</StyledContainer>
   ) : (
     <StyledImage
       alt="Image"
-      {...imageCustomise}
       width={currentSize}
       height={currentSize}
       avatar={avatar}
+      {...props}
     />
   );
 };

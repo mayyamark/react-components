@@ -12,11 +12,8 @@ export function Image() {
   return (
     <ImageComponent
       avatar={false}
-      size="small"
-      imageCustomise={{
-        alt: 'A picture',
-        src: 'https://th.bing.com/th/id/OIP.D4-WzVpB1I_0WnUSDcnGEAHaFm?pid=ImgDet&rs=1',
-      }}
+      src="https://th.bing.com/th/id/OIP.D4-WzVpB1I_0WnUSDcnGEAHaFm?pid=ImgDet&rs=1"
+      alt="Just an image"
     />
   );
 }
@@ -25,10 +22,8 @@ export function AvatarImage() {
   return (
     <ImageComponent
       avatar
-      imageCustomise={{
-        alt: 'A picture',
-        src: 'https://th.bing.com/th/id/OIP.D4-WzVpB1I_0WnUSDcnGEAHaFm?pid=ImgDet&rs=1',
-      }}
+      alt="A picture"
+      src="https://th.bing.com/th/id/OIP.D4-WzVpB1I_0WnUSDcnGEAHaFm?pid=ImgDet&rs=1"
     />
   );
 }
@@ -37,21 +32,12 @@ export function InvalidURL() {
   return (
     <ImageComponent
       avatar={false}
-      imageCustomise={{
-        alt: 'A picture',
-        src: 'th.bing.com/th/id/OIP.D4-WzVpB1I_0WnUSDcnGEAHaFm?pid=ImgDet&rs=1',
-      }}
+      alt="A picture"
+      src="th.bing.com/th/id/OIP.D4-WzVpB1I_0WnUSDcnGEAHaFm?pid=ImgDet&rs=1"
     />
   );
 }
 
 export function NoURL() {
-  return (
-    <ImageComponent
-      avatar={false}
-      imageCustomise={{
-        alt: 'A picture',
-      }}
-    />
-  );
+  return <ImageComponent avatar={false} alt="A picture" />;
 }
