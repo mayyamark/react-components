@@ -12,11 +12,13 @@ export enum sizes {
 
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   size?: sizes;
-  avatar: boolean;
+  avatar?: boolean;
 }
 
-const StyledImage = styled('img')(({ avatar }: ImageProps) => ({
-  borderRadius: avatar ? '50%' : 0,
+const StyledImage = styled('img', {
+  shouldForwardProp: (prop) => prop !== 'avatar',
+})<{ avatar?: boolean }>(({ avatar }) => ({
+  borderRadius: avatar === true ? '50%' : '0',
 }));
 
 const StyledContainer = styled(Container)({

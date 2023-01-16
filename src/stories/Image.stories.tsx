@@ -11,7 +11,6 @@ export default meta;
 export function Image() {
   return (
     <ImageComponent
-      avatar={false}
       src="https://th.bing.com/th/id/OIP.D4-WzVpB1I_0WnUSDcnGEAHaFm?pid=ImgDet&rs=1"
       alt="Just an image"
       size={sizes.large}
