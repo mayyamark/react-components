@@ -16,9 +16,11 @@ interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 }
 
 const StyledImage = styled('img', {
-  shouldForwardProp: (prop) => prop !== 'avatar',
-})<{ avatar?: boolean }>(({ avatar }) => ({
+  shouldForwardProp: (prop) => prop !== 'avatar' && prop !== 'size',
+})<{ avatar?: boolean; size?: sizes }>(({ avatar, size }) => ({
   borderRadius: avatar === true ? '50%' : '0',
+  width: size,
+  height: size,
 }));
 
 const StyledContainer = styled(Container)({
@@ -58,13 +60,7 @@ const ImageComponent: React.FC<ImageProps> = ({
   return props.src === undefined || !isValidURL(props.src) || !exists ? (
     <StyledContainer>This image could now be loaded</StyledContainer>
   ) : (
-    <StyledImage
-      alt="Image"
-      width={size}
-      height={size}
-      avatar={avatar}
-      {...props}
-    />
+    <StyledImage alt="Image" size={size} avatar={avatar} {...props} />
   );
 };
 
