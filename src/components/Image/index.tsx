@@ -27,12 +27,12 @@ const StyledContainer = styled(Container)({
   backgroundColor: 'grey',
 });
 
-async function isAnExistingUrl(url: any) {
+async function isAnExistingUrl(url: string) {
   const result = await fetch(url, { method: 'GET' });
   return result.ok;
 }
 
-function isValidURL(url: any) {
+function isValidURL(url: string) {
   let isValid;
   isValid =
     /^(http(s):\/\/.)[-a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_.~#?&//=]*)$/g.test(
@@ -47,20 +47,21 @@ function isValidURL(url: any) {
 const ImageComponent: React.FC<ImageProps> = ({
   size = sizes.medium,
   avatar,
+  src = '',
   ...props
 }: ImageProps) => {
   const [exists, setExists] = useState(true);
 
   useEffect(() => {
-    isAnExistingUrl(props.src)
+    isAnExistingUrl(src)
       .then(() => setExists(true))
       .catch(() => setExists(false));
-  }, [props.src]);
+  }, [src]);
 
-  return props.src === undefined || !isValidURL(props.src) || !exists ? (
+  return src === undefined || !isValidURL(src) || !exists ? (
     <StyledContainer>This image could now be loaded</StyledContainer>
   ) : (
-    <StyledImage alt="Image" size={size} avatar={avatar} {...props} />
+    <StyledImage alt="Image" size={size} avatar={avatar} src={src} {...props} />
   );
 };
 
