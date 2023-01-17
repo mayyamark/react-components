@@ -25,22 +25,19 @@ const StyledContainer = styled(Container)({
   backgroundColor: 'grey',
 });
 
-async function isAnExistingUrl(src: any) {
-  const result = await fetch(src, { method: 'GET' });
+async function isAnExistingUrl(url: any) {
+  const result = await fetch(url, { method: 'GET' });
   return result.ok;
 }
 
 function isValidURL(url: any) {
-  let isValid: boolean;
-  if (
+  let isValid;
+  isValid =
     /^(http(s):\/\/.)[-a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_.~#?&//=]*)$/g.test(
       url,
     )
-  ) {
-    isValid = true;
-  } else {
-    isValid = false;
-  }
+      ? (isValid = true)
+      : (isValid = false);
 
   return isValid;
 }
