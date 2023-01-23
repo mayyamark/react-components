@@ -203,11 +203,16 @@ interface PersonData {
 
 interface PersonalData extends Array<PersonData> {}
 
-function newData() {
-  data
-    .filter((person) => person.age <= 21)
-    .forEach((person) => (person.createdAt = new Date()));
-}
-console.log(newData());
+const result = data
+  .filter(function (person) {
+    var filtered = person.age <= 21;
+    return filtered;
+  })
+  .map(function (person) {
+    person.createdAt = new Date();
+    return person;
+  });
+
+console.log(result);
 
 export default {};
