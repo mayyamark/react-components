@@ -193,22 +193,22 @@ const data = [
   },
 ];
 
-function Person(
-  firstName: string,
-  lastName: string,
-  eyeColor: string,
-  age: number,
-) {
-  return {
-    fName: firstName,
-    lName: lastName,
-    eye: eyeColor,
-    age: age,
-  };
+interface PersonData {
+  firstName: string | string[];
+  lastName: string | string[];
 }
 
-var Tom = Person('Hello', 'Bye', 'Goodbye', 3);
+function fullName(person: PersonData) {
+  return person.firstName + ' ' + person.lastName;
+}
 
+var first = data.map((person) => {
+  return fullName({ firstName: person.firstName, lastName: person.lastName });
+});
+
+var Tom = fullName({ firstName: 'Tom', lastName: 'Hank' });
+
+console.log(first);
 console.log(Tom);
 
 export default {};
