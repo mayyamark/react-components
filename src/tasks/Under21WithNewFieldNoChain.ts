@@ -203,11 +203,14 @@ interface PersonData {
 
 interface PersonalData extends Array<PersonData> {}
 
-function newData() {
-  data
-    .filter((person) => person.age <= 21)
-    .forEach((person) => (person.createdAt = new Date()));
-}
-console.log(newData());
+let noChain: any = data.reduce(function (newArr: any, person) {
+  if (person.age <= 21) {
+    person.createdAt = new Date();
+    newArr.push(person);
+  }
+  return newArr;
+}, []);
+
+console.log(noChain);
 
 export default {};
