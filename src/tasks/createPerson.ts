@@ -200,14 +200,14 @@ function Person(
   age: number,
 ) {
   return {
-    fName: firstName,
-    lName: lastName,
-    eye: eyeColor,
-    age: age,
+    firstName,
+    lastName,
+    eyeColor,
+    age,
   };
 }
 
-var Tom = Person('Hello', 'Bye', 'Goodbye', 3);
+let Tom = { ...Person('Hello', 'Bye', 'Goodbye', 3) };
 
 console.log(Tom);
 

@@ -200,7 +200,9 @@ interface PersonProps {
   age: number;
 }
 
-function addPerson(people: Array<Object>, person: PersonProps) {
+interface PersonalData extends Array<PersonProps> {}
+
+function addPerson(people: PersonalData, person: PersonProps) {
   return {
     people: people,
     person: person,
@@ -215,5 +217,6 @@ var newPerson = addPerson(data, {
 });
 
 console.log(newPerson);
+console.log();
 
 export default {};
