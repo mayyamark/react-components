@@ -193,13 +193,13 @@ const data = [
   },
 ];
 
-function newData() {
+function makeArrayOfFullNames() {
   const allFullNames = data.map((person) => {
     return `${person.firstName} ${person.lastName}`;
   });
   return allFullNames;
 }
 
-console.log(newData());
+console.log(makeArrayOfFullNames());
 
 export default {};
