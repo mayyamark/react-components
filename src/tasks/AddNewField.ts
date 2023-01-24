@@ -198,19 +198,17 @@ interface PersonData {
   eyeColor: string;
   firstName: string;
   lastName: string;
-  createdAt?: unknown;
+  createdAt?: string;
 }
 
 interface PersonalData extends Array<PersonData> {}
 
-function AddNewField(data: PersonalData) {
+function addNewField(data: PersonalData) {
   return data.map((person) => {
     return { ...person, createdAt: new Date() };
   });
 }
 
-console.log(AddNewField(data));
-console.log('----------------------------------------');
-console.log(data);
+console.log(addNewField(data));
 
 export default {};
