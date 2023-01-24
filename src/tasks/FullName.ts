@@ -203,7 +203,7 @@ function fullName(person: PersonData) {
 }
 
 const arrayOfFullNames = data.map((person) => {
-  return fullName({ firstName: person.firstName, lastName: person.lastName });
+  return fullName(person);
 });
 
 let Tom = fullName({ firstName: 'Tom', lastName: 'Hank' });
