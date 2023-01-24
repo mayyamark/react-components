@@ -194,11 +194,10 @@ const data = [
 ];
 
 function newData() {
-  let fullName: string[] = [];
-  data.map((person) => {
-    fullName.push(person.firstName + ' ' + person.lastName);
+  const allFullNames = data.map((person) => {
+    return `${person.firstName} ${person.lastName}`;
   });
-  return fullName;
+  return allFullNames;
 }
 
 console.log(newData());
