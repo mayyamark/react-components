@@ -203,13 +203,14 @@ interface PersonData {
 
 interface PersonalData extends Array<PersonData> {}
 
-function AddNewField() {
-  data.forEach((person) => {
-    person.createdAt = new Date();
+function AddNewField(data: PersonalData) {
+  return data.map((person) => {
+    return { ...person, createdAt: new Date() };
   });
-  return data;
 }
 
-console.log(AddNewField());
+console.log(AddNewField(data));
+console.log('----------------------------------------');
+console.log(data);
 
 export default {};
