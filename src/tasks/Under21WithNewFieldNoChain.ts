@@ -203,7 +203,7 @@ interface PersonData {
 
 interface PersonalData extends Array<PersonData> {}
 
-let noChain: any = data.reduce(function (newArr: any, person) {
+let noChain: any = data.reduce((newArr: any, person) => {
   if (person.age <= 21) {
     person.createdAt = new Date();
     newArr.push(person);
