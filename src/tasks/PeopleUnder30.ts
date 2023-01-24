@@ -194,7 +194,7 @@ const data = [
 ];
 
 function getPeopleUnderThirty() {
-  const filtered = data.filter(function (person) {
+  const filtered = data.filter((person) => {
     return person.age <= 30;
   });
   return filtered;
