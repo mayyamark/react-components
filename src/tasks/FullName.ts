@@ -202,11 +202,11 @@ function fullName(person: PersonData) {
   return person.firstName + ' ' + person.lastName;
 }
 
-var first = data.map((person) => {
+const first = data.map((person) => {
   return fullName({ firstName: person.firstName, lastName: person.lastName });
 });
 
-var Tom = fullName({ firstName: 'Tom', lastName: 'Hank' });
+let Tom = fullName({ firstName: 'Tom', lastName: 'Hank' });
 
 console.log(first);
 console.log(Tom);
