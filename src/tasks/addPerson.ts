@@ -209,14 +209,20 @@ function addPerson(people: PersonalData, person: PersonProps) {
   };
 }
 
-var newPerson = addPerson(data, {
+let person = {
   firstName: 'Si',
   lastName: 'Senior',
   eyeColor: 'blue',
   age: 5,
-});
+};
+
+let newPerson2 = Object.assign({}, { ...addPerson(data, person) });
+
+let newPerson = {
+  ...addPerson(data, person),
+};
 
 console.log(newPerson);
-console.log();
+console.log(newPerson2);
 
 export default {};

@@ -16,6 +16,8 @@ let data = {
 };
 let changes = { age: 5, firstName: 'JELLLLLLLLLLLLLLY' };
 
-console.log(modifyPerson(data, changes));
+let newPerson = { ...modifyPerson(data, changes) };
+
+console.log(newPerson);
 
 export default {};
