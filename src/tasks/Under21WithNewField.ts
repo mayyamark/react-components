@@ -1,4 +1,4 @@
-const data: PersonalData = [
+const data = [
   {
     age: 21,
     eyeColor: 'blue',
@@ -203,16 +203,18 @@ interface PersonData {
 
 interface PersonalData extends Array<PersonData> {}
 
-const result = data
-  .filter(function (person) {
-    var filtered = person.age <= 21;
-    return filtered;
-  })
-  .map(function (person) {
-    person.createdAt = new Date();
-    return person;
-  });
+function findUnder21AddField(data: PersonalData) {
+  const newArray = data
+    .filter((person) => {
+      const filtered = person.age <= 21;
+      return filtered;
+    })
+    .map((person) => {
+      return { ...person, createdAt: new Date() };
+    });
+  return newArray;
+}
 
-console.log(result);
+console.log(findUnder21AddField(data));
 
 export default {};
