@@ -202,13 +202,13 @@ function fullName(person: PersonData) {
   return person.firstName + ' ' + person.lastName;
 }
 
-const first = data.map((person) => {
+const arrayOfFullNames = data.map((person) => {
   return fullName({ firstName: person.firstName, lastName: person.lastName });
 });
 
 let Tom = fullName({ firstName: 'Tom', lastName: 'Hank' });
 
-console.log(first);
+console.log(arrayOfFullNames);
 console.log(Tom);
 
 export default {};
