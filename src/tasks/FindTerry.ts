@@ -193,11 +193,11 @@ const data = [
   },
 ];
 
-function FindSingleItem() {
+function findTerry() {
   const man = data.find((person) => person.firstName === 'Terry');
   return man;
 }
 
-console.log(FindSingleItem());
+console.log(findTerry());
 
 export default {};
