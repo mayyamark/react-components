@@ -193,13 +193,13 @@ const data = [
   },
 ];
 
-function UnderThirty() {
+function underThirty() {
   const filtered = data.filter(function (person) {
     return person.age <= 30;
   });
   return filtered;
 }
 
-console.log(UnderThirty());
+console.log(underThirty());
 
 export default {};
