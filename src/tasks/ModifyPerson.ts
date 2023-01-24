@@ -8,15 +8,15 @@ interface PersonData {
 const modifyPerson = (person: PersonData, modifications?: PersonData) =>
   modifications ? { ...person, ...modifications } : person;
 
-let data = {
+const data = {
   firstName: 'Luke',
   lastName: 'Siemens',
   age: 10,
   eyeColor: 'blue',
 };
-let changes = { age: 5, firstName: 'JELLLLLLLLLLLLLLY' };
+const changes = { age: 5, firstName: 'JELLLLLLLLLLLLLLY' };
 
-let newPerson = { ...modifyPerson(data, changes) };
+const newPerson = { ...modifyPerson(data, changes) };
 
 console.log(newPerson);
 
