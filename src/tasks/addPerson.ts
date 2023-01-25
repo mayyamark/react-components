@@ -3,9 +3,7 @@ import { PersonProps, PersonalData } from './types';
 
 export function addPerson(people: PersonalData, person: PersonProps) {
   const arrayWithAddedPerson = [...people, person];
-  return {
-    arrayWithAddedPerson,
-  };
+  return arrayWithAddedPerson;
 }
 
 let person = {
