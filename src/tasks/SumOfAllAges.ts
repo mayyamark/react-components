@@ -1,10 +1,13 @@
 import data from './data';
 
 function findSumOfAll() {
-  const sum = data
-    .filter((person) => person.age <= 30)
-    .reduce((sum, person) => sum + person.age, 0);
-  return sum;
+  const sumOfAll = data.reduce((sum, person) => {
+    if (person.age <= 30) {
+      return sum + person.age;
+    }
+    return sum;
+  }, 0);
+  return sumOfAll;
 }
 
 console.log(findSumOfAll());

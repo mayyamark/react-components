@@ -1,11 +1,6 @@
-interface PersonData {
-  age?: number;
-  eyeColor?: string;
-  firstName?: string;
-  lastName?: string;
-}
+import { PersonProps } from './AddPerson';
 
-const modifyPerson = (person: PersonData, modifications?: PersonData) =>
+const modifyPerson = (person: PersonProps, modifications?: PersonProps) =>
   modifications ? { ...person, ...modifications } : person;
 
 const data = {

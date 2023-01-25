@@ -1,14 +1,5 @@
 import data from './data';
-
-interface PersonData {
-  age: number;
-  eyeColor: string;
-  firstName: string;
-  lastName: string;
-  createdAt?: string;
-}
-
-interface PersonalData extends Array<PersonData> {}
+import { PersonalData } from './AddPerson';
 
 function addNewField(data: PersonalData) {
   return data.map((person) => {

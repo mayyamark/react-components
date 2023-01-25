@@ -1,11 +1,7 @@
 import data from './data';
+import { PersonProps } from './AddPerson';
 
-interface PersonData {
-  firstName: string;
-  lastName: string;
-}
-
-function fullName(person: PersonData) {
+function fullName(person: PersonProps) {
   return person.firstName + ' ' + person.lastName;
 }
 
