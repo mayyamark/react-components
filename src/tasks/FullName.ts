@@ -2,7 +2,7 @@ import data from './data';
 import { PersonProps } from './AddPerson';
 
 export function fullName(person: PersonProps) {
-  return person.firstName + ' ' + person.lastName;
+  return `${person.firstName} ${person.lastName}`;
 }
 
 const arrayOfFullNames = data.map((person) => {
