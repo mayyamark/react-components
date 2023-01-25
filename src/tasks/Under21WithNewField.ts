@@ -1,19 +1,10 @@
 import data from './data';
-
-interface PersonData {
-  age: number;
-  eyeColor: string;
-  firstName: string;
-  lastName: string;
-  createdAt?: unknown;
-}
-
-type PersonalData = PersonData[];
+import { PersonalData } from './AddPerson';
 
 export function findUnder21AddField(data: PersonalData) {
   const newArray = data
     .filter((person) => {
-      return person.age <= 21;
+      if (person.age) return person.age <= 21;
     })
     .map((person) => {
       return { ...person, createdAt: new Date() };

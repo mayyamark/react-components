@@ -5,10 +5,10 @@ export interface PersonProps {
   lastName?: string;
   eyeColor?: string;
   age?: number;
-  createdAt?: string;
+  createdAt?: Date;
 }
 
-export interface PersonalData extends Array<PersonProps> {}
+export type PersonalData = PersonProps[];
 
 export function addPerson(people: PersonalData, person: PersonProps) {
   const arrayWithAddedPerson = [...people, person];
