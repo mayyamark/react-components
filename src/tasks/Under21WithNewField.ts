@@ -13,8 +13,7 @@ interface PersonalData extends Array<PersonData> {}
 function findUnder21AddField(data: PersonalData) {
   const newArray = data
     .filter((person) => {
-      const filtered = person.age <= 21;
-      return filtered;
+      return person.age <= 21;
     })
     .map((person) => {
       return { ...person, createdAt: new Date() };
