@@ -204,14 +204,14 @@ interface PersonData {
 interface PersonalData extends Array<PersonData> {}
 
 function addFieldToPeopleNoChain(data: PersonalData) {
-  const noChain = data.reduce((newArr: PersonalData, person) => {
+  const under21WithAddedField = data.reduce((newArr: PersonalData, person) => {
     if (person.age <= 21) {
       person.createdAt = new Date();
       newArr.push(person);
     }
     return newArr;
   }, []);
-  return noChain;
+  return under21WithAddedField;
 }
 
 console.log(addFieldToPeopleNoChain(data));
