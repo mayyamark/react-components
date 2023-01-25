@@ -216,7 +216,7 @@ let person = {
   age: 5,
 };
 
-let newPerson = {
+const newPerson = {
   ...addPerson(data, person),
 };
 
