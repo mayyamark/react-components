@@ -23,6 +23,6 @@ let person = {
   age: 5,
 };
 
-console.log(addPerson(data, person), data);
+console.log(addPerson(data, person));
 
 export default {};

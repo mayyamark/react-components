@@ -1,8 +1,8 @@
 import data from './data';
 
 interface PersonData {
-  firstName: string | string[];
-  lastName: string | string[];
+  firstName: string;
+  lastName: string;
 }
 
 function fullName(person: PersonData) {
