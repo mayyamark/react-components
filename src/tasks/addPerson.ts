@@ -203,9 +203,9 @@ interface PersonProps {
 interface PersonalData extends Array<PersonProps> {}
 
 function addPerson(people: PersonalData, person: PersonProps) {
+  const arrayWithAddedPerson = [...people, person];
   return {
-    people: people,
-    person: person,
+    arrayWithAddedPerson,
   };
 }
 
@@ -216,8 +216,6 @@ let person = {
   age: 5,
 };
 
-const newPerson = addPerson(data, person);
-
-console.log(newPerson);
+console.log(addPerson(data, person), data);
 
 export default {};
