@@ -1,6 +1,6 @@
 import data from './data';
 
-function getPeopleUnderThirty() {
+export function getPeopleUnderThirty() {
   const filtered = data.filter((person) => {
     return person.age <= 30;
   });
@@ -8,5 +8,3 @@ function getPeopleUnderThirty() {
 }
 
 console.log(getPeopleUnderThirty());
-
-export default {};

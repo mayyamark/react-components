@@ -1,7 +1,7 @@
 import data from './data';
 import { PersonProps } from './AddPerson';
 
-function fullName(person: PersonProps) {
+export function fullName(person: PersonProps) {
   return person.firstName + ' ' + person.lastName;
 }
 
@@ -13,5 +13,3 @@ let Tom = fullName({ firstName: 'Tom', lastName: 'Hank' });
 
 console.log(arrayOfFullNames);
 console.log(Tom);
-
-export default {};

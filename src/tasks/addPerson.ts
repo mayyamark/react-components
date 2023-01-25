@@ -4,13 +4,13 @@ export interface PersonProps {
   firstName?: string;
   lastName?: string;
   eyeColor?: string;
-  age: number;
+  age?: number;
   createdAt?: string;
 }
 
 export interface PersonalData extends Array<PersonProps> {}
 
-function addPerson(people: PersonalData, person: PersonProps) {
+export function addPerson(people: PersonalData, person: PersonProps) {
   const arrayWithAddedPerson = [...people, person];
   return {
     arrayWithAddedPerson,
@@ -25,5 +25,3 @@ let person = {
 };
 
 console.log(addPerson(data, person));
-
-export default {};

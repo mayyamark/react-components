@@ -10,7 +10,7 @@ interface PersonData {
 
 interface PersonalData extends Array<PersonData> {}
 
-function addFieldToPeopleNoChain(data: PersonalData) {
+export function addFieldToPeopleNoChain(data: PersonalData) {
   const under21WithAddedField = data.reduce((newArr: PersonalData, person) => {
     if (person.age <= 21) {
       const arrayWithAddedField = { ...person, createdAt: new Date() };
@@ -22,5 +22,3 @@ function addFieldToPeopleNoChain(data: PersonalData) {
 }
 
 console.log(addFieldToPeopleNoChain(data));
-
-export default {};

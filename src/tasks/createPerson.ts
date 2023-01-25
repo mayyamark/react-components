@@ -1,4 +1,4 @@
-function createPerson(
+export function createPerson(
   firstName: string,
   lastName: string,
   eyeColor: string,
@@ -15,5 +15,3 @@ function createPerson(
 let Tom = createPerson('Hello', 'Bye', 'Goodbye', 3);
 
 console.log(Tom);
-
-export default {};

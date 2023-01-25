@@ -1,6 +1,6 @@
 import data from './data';
 
-function makeArrayOfFullNames() {
+export function makeArrayOfFullNames() {
   const allFullNames = data.map((person) => {
     return `${person.firstName} ${person.lastName}`;
   });
@@ -8,5 +8,3 @@ function makeArrayOfFullNames() {
 }
 
 console.log(makeArrayOfFullNames());
-
-export default {};

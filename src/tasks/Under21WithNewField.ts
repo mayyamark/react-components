@@ -10,7 +10,7 @@ interface PersonData {
 
 type PersonalData = PersonData[];
 
-function findUnder21AddField(data: PersonalData) {
+export function findUnder21AddField(data: PersonalData) {
   const newArray = data
     .filter((person) => {
       return person.age <= 21;
@@ -22,5 +22,3 @@ function findUnder21AddField(data: PersonalData) {
 }
 
 console.log(findUnder21AddField(data));
-
-export default {};

@@ -1,7 +1,9 @@
 import { PersonProps } from './AddPerson';
 
-const modifyPerson = (person: PersonProps, modifications?: PersonProps) =>
-  modifications ? { ...person, ...modifications } : person;
+export const modifyPerson = (
+  person: PersonProps,
+  modifications?: PersonProps,
+) => (modifications ? { ...person, ...modifications } : person);
 
 const data = {
   firstName: 'Luke',
@@ -14,5 +16,3 @@ const changes = { age: 5, firstName: 'JELLLLLLLLLLLLLLY' };
 const newPerson = modifyPerson(data, changes);
 
 console.log(newPerson);
-
-export default {};

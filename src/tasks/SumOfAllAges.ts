@@ -1,9 +1,9 @@
 import data from './data';
 
-function findSumOfAll() {
+export function findSumOfAll() {
   const sumOfAll = data.reduce((sum, person) => {
     if (person.age <= 30) {
-      return sum + person.age;
+      sum + person.age;
     }
     return sum;
   }, 0);
@@ -11,5 +11,3 @@ function findSumOfAll() {
 }
 
 console.log(findSumOfAll());
-
-export default {};
