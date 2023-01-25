@@ -216,13 +216,10 @@ let person = {
   age: 5,
 };
 
-let newPerson2 = Object.assign({}, { ...addPerson(data, person) });
-
 let newPerson = {
   ...addPerson(data, person),
 };
 
 console.log(newPerson);
-console.log(newPerson2);
 
 export default {};
