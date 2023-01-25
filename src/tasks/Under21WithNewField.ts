@@ -8,7 +8,7 @@ interface PersonData {
   createdAt?: unknown;
 }
 
-interface PersonalData extends Array<PersonData> {}
+type PersonalData = PersonData[];
 
 function findUnder21AddField(data: PersonalData) {
   const newArray = data
