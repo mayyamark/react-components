@@ -216,9 +216,7 @@ let person = {
   age: 5,
 };
 
-const newPerson = {
-  ...addPerson(data, person),
-};
+const newPerson = addPerson(data, person);
 
 console.log(newPerson);
 
