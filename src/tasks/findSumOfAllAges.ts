@@ -1,7 +1,7 @@
 import data from './data';
 import { PersonalData } from './types';
 
-export function findSumOfAll(data: PersonalData) {
+export function findSumOfAllAges(data: PersonalData) {
   const sumOfAll = data.reduce((sum, person) => {
     if (person.age && person.age <= 30) {
       sum + person.age;
@@ -11,4 +11,4 @@ export function findSumOfAll(data: PersonalData) {
   return sumOfAll;
 }
 
-console.log(findSumOfAll(data));
+console.log(findSumOfAllAges(data));

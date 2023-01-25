@@ -1,7 +1,7 @@
 import data from './data';
 import { PersonalData } from './types';
 
-export function addFieldToPeopleNoChain(data: PersonalData) {
+export function findUnder21AddFieldNC(data: PersonalData) {
   const under21WithAddedField = data.reduce((newArr: PersonalData, person) => {
     if (person.age && person.age <= 21) {
       newArr.push({ ...person, createdAt: new Date() });
@@ -11,4 +11,4 @@ export function addFieldToPeopleNoChain(data: PersonalData) {
   return under21WithAddedField;
 }
 
-console.log(addFieldToPeopleNoChain(data));
+console.log(findUnder21AddFieldNC(data));
