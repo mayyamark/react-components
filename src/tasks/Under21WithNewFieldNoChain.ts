@@ -4,8 +4,7 @@ import { PersonalData } from './AddPerson';
 export function addFieldToPeopleNoChain(data: PersonalData) {
   const under21WithAddedField = data.reduce((newArr: PersonalData, person) => {
     if (person.age && person.age <= 21) {
-      const arrayWithAddedField = { ...person, createdAt: new Date() };
-      newArr.push(arrayWithAddedField);
+      newArr.push({ ...person, createdAt: new Date() });
     }
     return newArr;
   }, []);
