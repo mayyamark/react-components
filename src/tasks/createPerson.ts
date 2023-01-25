@@ -193,7 +193,7 @@ const data = [
   },
 ];
 
-function Person(
+function createPerson(
   firstName: string,
   lastName: string,
   eyeColor: string,
@@ -207,7 +207,7 @@ function Person(
   };
 }
 
-let Tom = { ...Person('Hello', 'Bye', 'Goodbye', 3) };
+let Tom = createPerson('Hello', 'Bye', 'Goodbye', 3);
 
 console.log(Tom);
 
