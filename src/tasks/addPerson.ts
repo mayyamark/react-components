@@ -1,14 +1,5 @@
 import data from './data';
-
-export interface PersonProps {
-  firstName?: string;
-  lastName?: string;
-  eyeColor?: string;
-  age?: number;
-  createdAt?: Date;
-}
-
-export type PersonalData = PersonProps[];
+import { PersonProps, PersonalData } from './types';
 
 export function addPerson(people: PersonalData, person: PersonProps) {
   const arrayWithAddedPerson = [...people, person];

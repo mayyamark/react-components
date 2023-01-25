@@ -1,4 +1,4 @@
-import { PersonProps } from './AddPerson';
+import { PersonProps } from './types';
 
 export const modifyPerson = (
   person: PersonProps,

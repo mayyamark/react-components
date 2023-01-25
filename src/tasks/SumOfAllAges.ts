@@ -1,5 +1,5 @@
 import data from './data';
-import { PersonalData } from './AddPerson';
+import { PersonalData } from './types';
 
 export function findSumOfAll(data: PersonalData) {
   const sumOfAll = data.reduce((sum, person) => {

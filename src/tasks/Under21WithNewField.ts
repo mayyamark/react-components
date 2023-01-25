@@ -1,5 +1,5 @@
 import data from './data';
-import { PersonalData } from './AddPerson';
+import { PersonalData } from './types';
 
 export function findUnder21AddField(data: PersonalData) {
   const newArray = data

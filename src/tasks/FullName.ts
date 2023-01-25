@@ -1,5 +1,5 @@
 import data from './data';
-import { PersonProps } from './AddPerson';
+import { PersonProps } from './types';
 
 export function fullName(person: PersonProps) {
   return `${person.firstName} ${person.lastName}`;

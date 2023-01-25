@@ -1,5 +1,5 @@
 import data from './data';
-import { PersonalData } from './AddPerson';
+import { PersonalData } from './types';
 
 export function addFieldToPeopleNoChain(data: PersonalData) {
   const under21WithAddedField = data.reduce((newArr: PersonalData, person) => {
